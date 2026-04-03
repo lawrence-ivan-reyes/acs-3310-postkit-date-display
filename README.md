@@ -21,6 +21,7 @@ Returns a relative time label compared to now.
 | ----------------- | --------------------------- |
 | < 1 min ago       | "just now"                  |
 | < 60 min ago      | "x min ago"                 |
+| < 24 hours ago    | "x hours ago"               |
 | Same calendar day | "today"                     |
 | 1 day ago         | "yesterday"                 |
 | 2-7 days ago      | "x days ago"                |
