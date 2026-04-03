@@ -54,11 +54,6 @@ Maps a status to a colour token for styling.
 | "review"    | "yellow"   |
 | "published" | "green"    |
 
-## Types
-```ts
-export type PostStatus = "draft" | "review" | "published"
-```
-
 ## Example Usage
 ```ts
 import { formatDate, formatRelativeDate, statusToLabel, statusToColor } from 'postkit-date-display' 
