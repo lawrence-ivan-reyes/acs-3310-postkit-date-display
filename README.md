@@ -1,4 +1,4 @@
-# postkit-date-display
+# PostKit: Date & Status Display Library
 ## Purpose
 Format dates and post status values into display strings.
 
