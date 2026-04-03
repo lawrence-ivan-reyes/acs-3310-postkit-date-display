@@ -27,10 +27,17 @@ Returns a relative time label compared to now.
 | 2-7 days ago      | "x days ago"                |
 | 7+ days ago       | Same output as `formatDate` |
 
+🤔 Seems like two fo these overlap! If something is 3 hours ago, is it "3 hours ago" or "today"?
+	•	< 24 hours ago → "x hours ago"
+	•	Same calendar day → "today"
+Pick one and make it clear for other devs. 
+
 ---
 
 ### `statusToLabel(status: PostStatus): string | null`
 Maps a status to a display label.
+
+🤔 You should be referenceing the PostStatus type here. We can't see it its in documentation somewhere else.  
 
 - Input: `status` - "draft", "review", or "published"
 - Output: Label string, or `null` if invalid
@@ -76,11 +83,11 @@ statusToColor("acs-3310") // null
 ## Edge Cases
 | **Scenario**                       | **Behaviour**                                        |
 | ---------------------------------- | ---------------------------------------------------- |
-| Dates with no timezone             | Treated as UTC, returns formatted date               |
+| Dates with no timezone             | Treated as UTC, returns formatted date 🤔 This is a good idea, you'll need to back this up!               |
 | Future date (`formatDate`)         | Formats normally, no special handling                |
 | Future date (`formatRelativeDate`) | Returns same output as `formatDate`                  |
 | Empty string `""`                  | Returns `null`                                       |
-| `null` or `undefined` passed in    | Returns `null`                                       |
+| `null` or `undefined` passed in 🤔 What is the input type? Does it allow null or undefined? Seems like its type string? Check it and see if it allows this.   | Returns `null`                                       |
 | Invalid status (e.g. `"hello"`)    | `statusToLabel` and `statusToColor` return `null`    |
 
 ## Design Notes
