@@ -56,20 +56,20 @@ Maps a status to a colour token for styling.
 
 ## Example Usage
 ```ts
-import { formatDate, formatRelativeDate, statusToLabel, statusToColor } from 'postkit-date-display' 
+import { formatDate, formatRelativeDate, statusToLabel, statusToColor } from "postkit-date-status-display" 
  
- formatDate('2026-04-02T20:16:00Z') // "April 2, 2026" 
- formatDate('blah-blah-blah') // null 
+ formatDate("2026-04-02T20:16:00Z") // "April 2, 2026" 
+ formatDate("blah-blah-blah") // null 
  
- formatRelativeDate('2026-04-02T20:16:00Z') // "just now" 
- formatRelativeDate('2026-04-01T08:00:00Z') // "yesterday" 
- formatRelativeDate('2026-01-01T00:00:00Z') // "Jan 1, 2026" 
+ formatRelativeDate("2026-04-02T20:16:00Z") // "just now" 
+ formatRelativeDate("2026-04-01T08:00:00Z") // "yesterday" 
+ formatRelativeDate("2026-01-01T00:00:00Z") // "Jan 1, 2026" 
  
- statusToLabel('review') // "In Review" 
- statusToLabel('hello') // null 
+ statusToLabel("review") // "In Review" 
+ statusToLabel("hello") // null 
  
- statusToColor('published') // "green" 
- statusToColor('acs-3310') // null
+ statusToColor("published") // "green" 
+ statusToColor("acs-3310") // null
 ```
 
 ## Edge Cases
