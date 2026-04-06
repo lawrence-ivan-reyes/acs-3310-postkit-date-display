@@ -3,7 +3,7 @@
 Format dates and post status values into display strings.
 
 ## Exports
-### `formatDate(dateString: string): string | null`
+### `formatDate(dateString: string | null | undefined): string | null`
 Converts an ISO 8601 date string into readable text.
 
 - Input: `dateString` - ISO date string (e.g., 2026-04-02T19:52:00Z")
@@ -11,7 +11,7 @@ Converts an ISO 8601 date string into readable text.
 
 ---
 
-### `formatRelativeDate(dateString: string): string | null`
+### `formatRelativeDate(dateString: string | null | undefined): string | null`
 Returns a relative time label compared to now.
 
 - Input: `dateString` - ISO date string 
@@ -22,17 +22,16 @@ Returns a relative time label compared to now.
 | < 1 min ago       | "just now"                  |
 | < 60 min ago      | "x min ago"                 |
 | < 24 hours ago    | "x hours ago"               |
-| Same calendar day | "today"                     |
 | 1 day ago         | "yesterday"                 |
 | 2-7 days ago      | "x days ago"                |
 | 7+ days ago       | Same output as `formatDate` |
 
 ---
 
-### `statusToLabel(status: PostStatus): string | null`
+### `statusToLabel(status: string): string | null`
 Maps a status to a display label.
 
-- Input: `status` - "draft", "review", or "published"
+- Input: `status` - see `PostStatus` below
 - Output: Label string, or `null` if invalid
 
 | **Input**   | **Output**  |
@@ -43,10 +42,10 @@ Maps a status to a display label.
 
 ---
 
-### `statusToColor(status: PostStatus): string | null`
+### `statusToColor(status: string): string | null`
 Maps a status to a colour token for styling.
 
-- Input: `status` - "draft", "review", or "published"
+- Input: `status` - see `PostStatus` below
 - Output: token string or `null` if invalid
 
 | **Input**   | **Output** |
@@ -54,6 +53,16 @@ Maps a status to a colour token for styling.
 | "draft"     | "gray"     |
 | "review"    | "yellow"   |
 | "published" | "green"    |
+
+---
+
+## Types
+### `PostStatus`
+The set of supported status strings.
+
+```ts
+export type PostStatus = "draft" | "review" | "published"
+```
 
 ## Example Usage
 ```ts
@@ -90,3 +99,6 @@ statusToColor("acs-3310") // null
   - If a function throws an error, the app crashes unless there's extra code to catch it
 - Colour tokens are semantic names, not hex codes - consumer decides what "green" means in their UI
   - This way, the consumer can actually control what those colours look like in their app
+
+### Timezone-less inputs are treated as UTC
+ISO-style strings without a timezone (like `"2026-04-02T19:52:00"`) can be interpreted differently depending on where they’re run. Treating them as UTC keeps things predictable and avoids surprises when the same data is formatted on different machines.
