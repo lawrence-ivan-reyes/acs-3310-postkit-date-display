@@ -6,7 +6,7 @@ Format dates and post status values into display strings.
 ### `formatDate(dateString: string | null | undefined): string | null`
 Converts an ISO 8601 date string into readable text.
 
-- Input: `dateString` - ISO date string (e.g., 2026-04-02T19:52:00Z")
+- Input: `dateString` - ISO date string (e.g., "2026-04-02T19:52:00Z")
 - Output: formatted string like `"April 2, 2026"` or `null` if invalid 
 
 ---
