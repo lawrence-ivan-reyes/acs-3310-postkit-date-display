@@ -73,7 +73,7 @@ formatDate("blah-blah-blah") // null
 
 formatRelativeDate("2026-04-02T20:16:00Z") // "just now" 
 formatRelativeDate("2026-04-01T08:00:00Z") // "yesterday" 
-formatRelativeDate("2026-01-01T00:00:00Z") // "Jan 1, 2026" 
+formatRelativeDate("2026-01-01T00:00:00Z") // "January 1, 2026" 
 
 statusToLabel("review") // "In Review" 
 statusToLabel("hello") // null 
